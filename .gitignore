@@ -16,3 +16,5 @@ prisma/client/
 # Editor configurations
 .vscode/
 .idea/
+
+.vercel
