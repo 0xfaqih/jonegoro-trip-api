@@ -20,7 +20,7 @@ model Tour {
   place    String
   rating   Float
   desc     String?
-  pict     String[]
+  images     Image[]
   price    Price?    //(one-to-one)
 }
 
@@ -31,4 +31,11 @@ model Price {
   car_park     Float
   tour_id      Int  @unique
   Tour         Tour  @relation(fields: [tour_id], references: [id], onDelete: Cascade) 
+}
+
+model Image {
+  id       Int    @id @default(autoincrement())
+  url      String
+  tour_id  Int
+  Tour     Tour   @relation(fields: [tour_id], references: [id], onDelete: Cascade)
 }

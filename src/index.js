@@ -1,14 +1,19 @@
 import express from 'express';
+import cors from 'cors';
 import usersRoutes from './routes/users.js';
 import toursRoutes from './routes/tours.js';
 import morganMiddleware from './middlewares/morganMiddleware.js';
-
 // Inisialisasi Express
 const app = express();
 app.use(express.json());
 
 // Middleware
 app.use(morganMiddleware);
+app.use(cors({
+  origin: 'http://localhost:5173', // Domain frontend yang diizinkan
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Metode HTTP yang diizinkan
+  allowedHeaders: ['Content-Type', 'Authorization'], // Header yang diizinkan
+}));
 
 // Rute
 app.use('/api/users', usersRoutes);
