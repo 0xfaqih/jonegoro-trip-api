@@ -111,10 +111,10 @@ const deleteImageFromTour = async (req, res) => {
 const createTour = async (req, res) => {
   try {
     const {
-      tour_name, place, rating, desc, images, price,
+      tour_name, place, rating, category, desc, images, price,
     } = req.body;
 
-    if (!tour_name || !place || !rating || !Array.isArray(images) || !price) {
+    if (!tour_name || !place || !rating || !Array.isArray(images) || !price || !category) {
       return res.status(400).json({
         status: 'error',
         message: 'Invalid data provided for creating tour',
@@ -126,6 +126,7 @@ const createTour = async (req, res) => {
         tour_name,
         place,
         rating,
+        category,
         desc,
       },
     });
@@ -211,11 +212,11 @@ const updateTourById = async (req, res) => {
   try {
     const { id } = req.params;
     const {
-      tour_name, place, rating, desc, images, price,
+      tour_name, place, rating, category, desc, images, price,
     } = req.body;
 
     // Validate input
-    if (!tour_name ||!place ||!rating ||!Array.isArray(images) ||!price) {
+    if (!tour_name ||!place ||!rating ||!Array.isArray(images) ||!price || !category) {
       return res.status(400).json({
         status: 'error',
         message: 'Invalid data provided for updating tour',
@@ -239,6 +240,7 @@ const updateTourById = async (req, res) => {
         tour_name,
         place,
         rating,
+        category,
         desc,
       },
     });

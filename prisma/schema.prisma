@@ -19,6 +19,7 @@ model Tour {
   tour_name  String
   place    String
   rating   Float
+  category  String
   desc     String?
   images     Image[]
   price    Price?    //(one-to-one)
