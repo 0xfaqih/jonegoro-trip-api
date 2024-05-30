@@ -10,7 +10,7 @@ app.use(express.json());
 // Middleware
 app.use(morganMiddleware);
 app.use(cors({
-  origin: 'http://localhost:3000', // Domain frontend yang diizinkan
+  origin: ['http://localhost:3000', 'https://jonegoro-trip-dashboard.vercel.app'], // Domain frontend yang diizinkan
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Metode HTTP yang diizinkan
   allowedHeaders: ['Content-Type', 'Authorization'], // Header yang diizinkan
 }));
