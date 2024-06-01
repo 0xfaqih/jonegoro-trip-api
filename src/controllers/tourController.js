@@ -216,7 +216,7 @@ const updateTourById = async (req, res) => {
     } = req.body;
 
     // Validate input
-    if (!tour_name ||!place ||!rating ||!Array.isArray(images) ||!price || !category) {
+    if (!tour_name || !place || !rating || !Array.isArray(images) || !price || !category) {
       return res.status(400).json({
         status: 'error',
         message: 'Invalid data provided for updating tour',

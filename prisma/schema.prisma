@@ -40,3 +40,12 @@ model Image {
   tour_id  Int
   Tour     Tour   @relation(fields: [tour_id], references: [id], onDelete: Cascade)
 }
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title     String
+  banner    String   @db.Text
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
