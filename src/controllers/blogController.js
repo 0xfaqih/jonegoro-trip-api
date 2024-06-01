@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import prisma from '../models/prisma.js';
 
 // GET all blogs
 export const getAllBlogs = async (req, res) => {
