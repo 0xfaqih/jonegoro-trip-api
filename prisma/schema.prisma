@@ -56,3 +56,12 @@ model Souvenir {
   image     String
   price     Int
 }
+
+model Accommodation {
+  id        Int      @id @default(autoincrement())
+  name      String
+  image     String
+  location  String
+  category  String
+  price     Int
+}
