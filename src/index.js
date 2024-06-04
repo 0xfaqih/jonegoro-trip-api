@@ -1,8 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+
 import usersRoutes from './routes/users.js';
 import toursRoutes from './routes/tours.js';
 import blogsRoutes from './routes/blogs.js';
+import souvenirsRoutes from './routes/souvenirs.js';
 import morganMiddleware from './middlewares/morganMiddleware.js';
 
 const app = express();
@@ -18,6 +20,8 @@ app.use(cors({
 app.use('/api/users', usersRoutes);
 app.use('/api/tours', toursRoutes);
 app.use('/api/blogs', blogsRoutes);
+app.use('/api/souvenirs', souvenirsRoutes);
+
 
 const PORT = process.env.PORT || 3000;
 
