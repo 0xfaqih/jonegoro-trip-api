@@ -1,10 +1,10 @@
 import express from 'express';
 import {
-   getAllAccommodations,
-   getAccommodationById,
-   createAccommodation,
-   updateAccommodation,
-   deleteAccommodation,
+  getAllAccommodations,
+  getAccommodationById,
+  createAccommodation,
+  updateAccommodation,
+  deleteAccommodation,
 } from '../controllers/accommodationController.js';
 
 const router = express.Router();

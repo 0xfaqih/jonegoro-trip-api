@@ -1,5 +1,7 @@
 import express from 'express';
-import { login, register } from '../controllers/authController.js';
+import {
+  checkEmail, login, register, verifyToken, deleteAdmin,
+} from '../controllers/authController.js';
 import { createUser } from '../controllers/userController.js';
 import { protect, isSuperAdmin } from '../middlewares/authMiddleware.js';
 
@@ -8,5 +10,8 @@ const router = express.Router();
 router.post('/login', login);
 router.post('/register', register);
 router.post('/create-user', protect, isSuperAdmin, createUser);
+router.post('/verify-token', verifyToken);
+router.post('/check-email', checkEmail);
+router.post('/delete-admin/:id', protect, isSuperAdmin, deleteAdmin);
 
 export default router;

@@ -1,10 +1,10 @@
 import express from 'express';
 import {
-   getAllSouvenirs,
-   getSouvenirById,
-   createSouvenir,
-   updateSouvenir,
-   deleteSouvenir,
+  getAllSouvenirs,
+  getSouvenirById,
+  createSouvenir,
+  updateSouvenir,
+  deleteSouvenir,
 } from '../controllers/souvenirController.js';
 
 const router = express.Router();
