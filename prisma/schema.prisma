@@ -31,16 +31,6 @@ model Tour {
   category  String
   desc     String?
   images     Image[]
-  price    Price?    //(one-to-one)
-}
-
-model Price {
-  id           Int   @id @default(autoincrement())
-  ticket       Float
-  motor_park   Float
-  car_park     Float
-  tour_id      Int  @unique
-  Tour         Tour  @relation(fields: [tour_id], references: [id], onDelete: Cascade) 
 }
 
 model Image {
@@ -63,7 +53,7 @@ model Souvenir {
   id        Int      @id @default(autoincrement())
   name      String
   image     String
-  price     Int
+  location  String
 }
 
 model Accommodation {
@@ -72,5 +62,4 @@ model Accommodation {
   image     String
   location  String
   category  String
-  price     Int
 }
