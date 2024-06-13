@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken';
-
+console.log('Entering protect middleware');
 export const protect = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
+    console.log('Token received:', token);
     return res.status(401).json({ message: 'Not authorized, no token' });
   }
 
@@ -12,6 +13,10 @@ export const protect = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
+    if (error.name === 'TokenExpiredError') {
+         return res.status(401).json({ message: 'Session expired, please log in again' });
+      }
+    console.log('Error in token verification:', error);
     return res.status(401).json({ message: 'Not authorized, token failed' });
   }
 };
