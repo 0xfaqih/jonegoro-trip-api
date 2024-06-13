@@ -111,10 +111,10 @@ const deleteImageFromTour = async (req, res) => {
 const createTour = async (req, res) => {
   try {
     const {
-      tour_name, place, rating, category, desc, images, price,
+      tour_name, place, rating, category, desc, images,
     } = req.body;
 
-    if (!tour_name || !place || !rating || !Array.isArray(images) || !price || !category) {
+    if (!tour_name || !place || !rating || !Array.isArray(images) || !category) {
       return res.status(400).json({
         status: 'error',
         message: 'Invalid data provided for creating tour',
@@ -128,15 +128,6 @@ const createTour = async (req, res) => {
         rating,
         category,
         desc,
-      },
-    });
-
-    await prisma.price.create({
-      data: {
-        ticket: price.ticket,
-        motor_park: price.motor_park,
-        car_park: price.car_park,
-        tour_id: newTour.id,
       },
     });
 
@@ -155,11 +146,6 @@ const createTour = async (req, res) => {
       data: {
         newTour,
         images: imagesData,
-        price: {
-          ticket: price.ticket,
-          motor_park: price.motor_park,
-          car_park: price.car_park,
-        },
       },
     });
   } catch (error) {
@@ -181,7 +167,6 @@ const getTourById = async (req, res) => {
         id: parseInt(id),
       },
       include: {
-        price: true,
         images: true,
       },
     });
@@ -212,11 +197,11 @@ const updateTourById = async (req, res) => {
   try {
     const { id } = req.params;
     const {
-      tour_name, place, rating, category, desc, images, price,
+      tour_name, place, rating, category, desc, images,
     } = req.body;
 
     // Validate input
-    if (!tour_name || !place || !rating || !Array.isArray(images) || !price || !category) {
+    if (!tour_name || !place || !rating || !Array.isArray(images) || !category) {
       return res.status(400).json({
         status: 'error',
         message: 'Invalid data provided for updating tour',
@@ -245,15 +230,6 @@ const updateTourById = async (req, res) => {
       },
     });
 
-    await prisma.price.update({
-      where: { tour_id: parseInt(id) },
-      data: {
-        ticket: price.ticket,
-        motor_park: price.motor_park,
-        car_park: price.car_park,
-      },
-    });
-
     await prisma.image.deleteMany({
       where: { tour_id: parseInt(id) },
     });
@@ -271,11 +247,6 @@ const updateTourById = async (req, res) => {
       data: {
         updatedTour,
         images: imagesData,
-        price: {
-          ticket: price.ticket,
-          motor_park: price.motor_park,
-          car_park: price.car_park,
-        },
       },
     });
   } catch (error) {
