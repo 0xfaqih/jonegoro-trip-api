@@ -22,13 +22,13 @@ export const getSouvenirById = async (req, res) => {
 };
 
 export const createSouvenir = async (req, res) => {
-  const { name, image, price } = req.body;
+  const { name, image, location } = req.body;
   try {
     const newSouvenir = await prisma.souvenir.create({
       data: {
         name,
         image,
-        price,
+        location,
       },
     });
     res.status(201).json({ status: 'success', message: 'Souvenir created successfully', data: newSouvenir });
@@ -39,14 +39,14 @@ export const createSouvenir = async (req, res) => {
 
 export const updateSouvenir = async (req, res) => {
   const { id } = req.params;
-  const { name, image, price } = req.body;
+  const { name, image, location } = req.body;
   try {
     const updatedSouvenir = await prisma.souvenir.update({
       where: { id: parseInt(id) },
       data: {
         name,
         image,
-        price,
+        location,
       },
     });
     res.status(200).json({ status: 'success', message: 'Souvenir updated successfully', data: updatedSouvenir });
