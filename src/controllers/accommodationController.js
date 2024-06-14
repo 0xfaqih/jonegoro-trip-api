@@ -22,7 +22,7 @@ export const getAccommodationById = async (req, res) => {
 
 export const createAccommodation = async (req, res) => {
   const {
-    name, image, location, category, price,
+    name, image, location, category, price, telephon
   } = req.body;
   try {
     const newAccommodation = await prisma.accommodation.create({
@@ -32,6 +32,7 @@ export const createAccommodation = async (req, res) => {
         location,
         category,
         price,
+        telephon
       },
     });
     res.status(201).json({ status: 'success', message: 'Accommodation created successfully', data: newAccommodation });
@@ -43,7 +44,7 @@ export const createAccommodation = async (req, res) => {
 export const updateAccommodation = async (req, res) => {
   const { id } = req.params;
   const {
-    name, image, location, category, price,
+    name, image, location, category, price, telephon
   } = req.body;
   try {
     const updatedAccommodation = await prisma.accommodation.update({
@@ -54,6 +55,7 @@ export const updateAccommodation = async (req, res) => {
         location,
         category,
         price,
+        telephon
       },
     });
     res.status(200).json({ status: 'success', message: 'Accommodation updated successfully', data: updatedAccommodation });

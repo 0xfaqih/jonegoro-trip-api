@@ -62,4 +62,5 @@ model Accommodation {
   image     String
   location  String
   category  String
+  telephon  String
 }
